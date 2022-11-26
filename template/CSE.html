@@ -1,0 +1,180 @@
+{% extends 'index.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<hr>
+
+
+  <h1>ABC college of Engineering </h1>
+  <h3>Nagercoil,TamilNadu</h3>
+  <hr>
+  <nav class="navbar navbar-inverse navbar-fixed-top color">
+  <div class="container">
+    <div class="navbar-header">
+      {% if user.is_authenticated %}
+        <h4>Staff : {{ user.username}}</h4>
+        {% else %}
+        <h4>Admin Dashboard</h4>
+      {% endif %}
+    </div>   
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          <li><a href="{% url 'Profile' %}">Profile</a></li>
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+          
+          {% else %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          <li><a href="{% url 'Login' %}">Login</a></li>
+          <li><a href="{% url 'Register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+    
+    </div>
+  </nav>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Computer science and Engineering</title>
+    <style>
+      h1
+      {
+        text-align: center;
+      }
+
+      h3
+      {
+        text-align: center;
+      }
+
+      h4
+      {
+        text-align: center;
+      }
+      table
+      {
+        width:800px;
+        height:500px;
+        margin: auto;
+        border-style: solid;
+        text-align: center;
+      }
+
+      table,tr,td
+      {
+
+        border-style: solid;
+        border-collapse: collapse;
+        border-radius:0px;
+      }
+
+      th
+      {
+        border-style: solid;
+        text-align:center ;
+        background:#154660;
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <h3>Computer science and engineering</h3>
+    <h4>Subjects</h4>
+    <br><br>
+
+    <table>
+      <tr>
+        <th>SI.NO</th>
+        <th>Semester</th>
+        <th>Subjects</th>
+      </tr>
+
+      <tr>
+        <td>1.</td>
+        <td>I</td>
+        <td>Technical English</td>
+      </tr>
+
+      <tr>
+        <td>2.</td>
+        <td>I</td>
+        <td>Engineering Mathematics I</td>
+      </tr>
+
+      <tr>
+        <td>3.</td>
+        <td>I</td>
+        <td>Engineering Physics</td>
+      </tr>
+
+      <tr>
+        <td>4.</td>
+        <td>I</td>
+        <td>Engineering Chemistry</td>
+      </tr>
+
+      <tr>
+        <td>5.</td>
+        <td>I</td>
+        <td>Problem Solving and Python Programming</td>
+      </tr>
+
+      <tr>
+        <td>6.</td>
+        <td>I</td>
+        <td>Basic Sciences Laboratory</td>
+      </tr>
+
+      <tr>
+        <td>7.</td>
+        <td>I</td>
+        <td>Problem Solving and Python Programming Laboratory</td>
+      </tr>
+
+      <tr>
+        <td>8.</td>
+        <td>II</td>
+        <td>TECHNICAL ENGLISH II</td>
+      </tr>
+
+      <tr>
+        <td>9.</td>
+        <td>II</td>
+        <td>ENGINEERING PHYSICS – II</td>
+      </tr>
+
+      <tr>
+        <td>10.</td>
+        <td>II</td>
+        <td>ENGINEERING CHEMISTRY – II</td>
+      </tr>
+
+      <tr>
+        <td>11.</td>
+        <td>II</td>
+        <td>DIGITAL PRINCIPLES AND SYSTEM DESIGN </td>
+      </tr>
+
+      <tr>
+        <td>12.</td>
+        <td>II</td>
+        <td>PROGRAMMING AND DATA STRUCTURES I </td>
+      </tr>
+
+      <tr>
+        <td>13.</td>
+        <td>II</td>
+        <td>PHYSICS AND CHEMISTRY LABORATORY – II </td>
+      </tr>
+
+      <tr>
+        <td>14.</td>
+        <td>II</td>
+        <td>CHEMISTRY LABORATORY -II</td>
+      </tr>
+    </table>
+  </body>
+</html>
+{% endblock %}

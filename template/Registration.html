@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% block content %}
+{%load crispy_forms_tags %}
+<nav class="navbar navbar-inverse navbar-fixed-top color">
+  <div class="container">
+    <div class="navbar-header">
+        <a href="" class="navbar-brand">Dashboard</a>
+    </div>   
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          <li><a href="{% url 'Profile' %}">Profile</a></li>
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+          {% else %}
+          
+          <li><a href="{% url 'Login' %}">Login</a></li>
+          <li><a href="{% url 'Register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+    
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+<h1>ABC college of Engineering </h1>
+<h3>Nagercoil,TamilNadu</h3>
+<hr>
+<h3>Register here</h3>
+<hr>
+<div class="container-fluid" style="margin-top:45px;">
+ 
+  <div class="col-md-offset-4 col-md-4 well" >
+    <form method="post" autocomplete="off">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ messages.tags }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% csrf_token %}
+      {{form|crispy}}
+      <button type="submit" class="btn  btn-primary">Register</button>
+    </form>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

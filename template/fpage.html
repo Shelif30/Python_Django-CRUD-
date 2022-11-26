@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<hr>
+
+
+  <h1>ABC college of Engineering </h1>
+  <h3>Nagercoil,TamilNadu</h3>
+  <hr>
+  <nav class="navbar navbar-inverse navbar-fixed-top color">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="" class="navbar-brand">Login Page</a>
+  </div>  
+        <ul class="nav navbar-nav navbar-right">
+         
+         
+          <li><a href="#">About</a></li>
+         
+        </ul>
+    
+    </div>
+  </nav>
+  <div class="col-md-offset-4 col-md-4 " >
+    <h1>Login as </h1>
+   <table margin="auto">
+    <th>
+      <div class="dropdown">
+        <button class="dropbtn">Edit Student</button>
+        <div class="dropdown-content">
+          <a href="{% url 'Login' %}">Staff Login</a>
+          <a href="{% url 'Login' %}">Student Login</a>
+        </div>
+      </div>
+    </th>
+   </table>
+    
+    
+{% endblock %}  

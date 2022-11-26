@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top color">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="" class="navbar-brand">Dashboard</a>
+      </div>   
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'loginpage' %}">Home</a></li>
+            <li><a href="{% url 'Profile' %}">Profile</a></li>
+            <li><a href="{% url 'Logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'loginpage' %}">Home</a></li>
+            <li><a href="{% url 'Login' %}">Login</a></li>
+            <li><a href="{% url 'Register' %}">Register</a></li>
+            {% endif %}
+          </ul>
+      
+      </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+<h1>ABC college of Engineering </h1>
+<div class="container_fluid" style="margin-top: 50px;">
+<div class="col-md-offset-3 col-md-6">
+    
+    <hr>
+    <table class="table table-bordered">
+       <thead>
+        <tr>
+           <th>SI.NO</th>
+           <th>Name</th>
+           <th>Department</th>
+           <th>Regno</th>
+           <th>EmailID</th>
+           <th>Address</th>
+        </tr>
+       </thead>
+       {% for mydata in data %}
+       <tbody>
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{mydata.Name}}</td>
+            <td>{{mydata.Department}}</td>
+            <td>{{mydata.Regno}}</td>
+            <td>{{mydata.EmailID}}</td>
+            <td>{{mydata.Address}}</td>
+        </tr>
+
+       </tbody>
+       {% endfor %}
+    </table>
+
+</div>
+</div>
+
+{% endblock %}

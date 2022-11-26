@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+{%load crispy_forms_tags %}
+<nav class="navbar navbar-inverse navbar-fixed-top color">
+   <div class="container">
+     <div class="navbar-header">
+         <a href="" class="navbar-brand">Dashboard</a>
+     </div>   
+         <ul class="nav navbar-nav navbar-right">
+           {% if user.is_authenticated %}
+           <li><a href="{% url 'loginpage' %}">Home</a></li>
+           <li><a href="{% url 'Profile' %}">Profile</a></li>
+           <li><a href="{% url 'Logout' %}">Logout</a></li>
+           {% else %}
+           <li><a href="{% url 'loginpage' %}">Home</a></li>
+           <li><a href="{% url 'Login' %}">Login</a></li>
+           <li><a href="{% url 'Register' %}">Register</a></li>
+           {% endif %}
+         </ul>
+     
+     </div>
+   </nav>
+   <br>
+   <br>
+   <br>
+<div class="container-fluid" style="margin-top: 50px;">
+   <div class="col-md-offset-4 col-md-4">
+      <h2>Insert Mark</h2>
+      <hr>
+
+      <form method="post" autocomplete="off">
+         {% csrf_token %}
+         {{form|crispy}}
+
+         <input type="submit" name="" class="btn btn-primary btn-block" value="ADD Mark">
+      </form>
+
+   </div>
+</div>
+{% endblock %}

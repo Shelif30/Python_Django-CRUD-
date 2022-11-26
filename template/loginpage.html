@@ -1,0 +1,128 @@
+{% extends 'index.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<hr>
+
+
+  <h1>ABC college of Engineering </h1>
+  <h3>Nagercoil,TamilNadu</h3>
+  <hr>
+  <nav class="navbar navbar-inverse navbar-fixed-top color">
+  <div class="container">
+    <div class="navbar-header">
+      {% if user.is_authenticated %}
+        <h4>Staff : {{ user.username}}</h4>
+        {% else %}
+        <h4>Admin Dashboard</h4>
+      {% endif %}
+    </div>   
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'Profile' %}">Profile</a></li>
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+          
+          {% else %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          
+          <li><a href="{% url 'Register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+    
+    </div>
+  </nav>
+  {% if user.is_authenticated %}
+  
+  <table>
+   
+    <tr>
+      <th>
+        <div class="dropdown">
+          <button class="dropbtn">Informations</button>
+          <div class="dropdown-content">
+            <a href="studentsinfo">Student's Information</a>
+            <a href="infomark">Student's Mark Details</a>
+            
+          </div>
+        </div>
+      </th>
+     
+    {% if user.is_staff%}
+  
+    
+      <th>
+        <div class="dropdown">
+          <button class="dropbtn">Edit Student</button>
+          <div class="dropdown-content">
+            <a href="{% url 'Insert' %}">Add new student</a>
+            <a href="{% url 'studentsupdate' %}">Update Student's profile</a>
+          </div>
+        </div>
+      </th>
+
+      <th>
+        <div class="dropdown">
+          <button class="dropbtn">Academics</button>
+          <div class="dropdown-content">
+            <a href="insertmark">Insert mark</a>
+            <a href="studentmarkupdate">Update mark</a>  
+          </div>
+        </div>
+      </th>
+
+      
+    <th>
+    
+      <div class="dropdown">
+        <button class="dropbtn">E-Resources</button>
+        <div class="dropdown-content">
+          <a href="mech">Mechaniacl Engineering</a>
+          <a href="IT">Infromation Technology</a> 
+          <a href="CSE">Computer and Science Engineering</a> 
+          <a href="ECE">Electronics and Communication Engineering</a> 
+          <a href="EEE">Electrical and Electronics Engineering</a> 
+          <a href="civil">Civil Engineering</a> 
+        </div>
+      </div>
+      
+    </th>
+
+    {% else %}
+
+    <th>
+    
+      <div class="dropdown">
+        <button class="dropbtn">E-Resources</button>
+        <div class="dropdown-content">
+          <a href="mech">Mechaniacl Engineering</a>
+          <a href="IT">Infromation Technology</a> 
+          <a href="CSE">Computer and Science Engineering</a> 
+          <a href="ECE">Electronics and Communication Engineering</a> 
+          <a href="EEE">Electrical and Electronics Engineering</a> 
+          <a href="civil">Civil Engineering</a> 
+        </div>
+      </div>
+      
+    </th>
+    {% endif %}
+  </tr>  
+</table>
+  <hr>
+  {% else %}
+   <h1>Home Page</h1>
+   <table>
+    <tr>
+    <th>
+   <div class="dropdown">
+    <button class="dropbtn">Login as</button>
+    <div class="dropdown-content">
+      <a href="Login">Admin Login</a>
+      <a href="Login">Student Login</a>  
+    </div>
+  </div>
+</tr>
+</th>
+</table>
+  {% endif %}
+{% endblock %}

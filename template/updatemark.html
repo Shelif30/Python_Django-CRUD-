@@ -1,0 +1,76 @@
+{% extends 'index.html' %}
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top color">
+    <div class="container">
+      <div class="navbar-header">
+        {% if user.is_authenticated %}
+        <h4>Staff : {{ user.username}}</h4>
+        {% else %}
+        <h4>Admin Dashboard</h4>
+      {% endif %}
+      </div>   
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'loginpage' %}">Home</a></li>
+            <li><a href="{% url 'Profile' %}">Profile</a></li>
+            <li><a href="{% url 'Logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'loginpage' %}">Home</a></li>
+            <li><a href="{% url 'Login' %}">Login</a></li>
+            <li><a href="{% url 'Register' %}">Register</a></li>
+            {% endif %}
+          </ul>
+      
+      </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+<h1>ABC college of Engineering </h1>
+<h3>Nagercoil,TamilNadu</h3>
+<hr>
+<div class="container-fluid">
+    <div class="col-md-offset-4 col-md-4">
+        <form action="/updatemark/{{data.id}}" method="post" autocomplete="off">
+            {% csrf_token %}
+            <h3 class="page-header text-primary text-center">Student's Mark Update</h3>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" value="{{data.Name}}" name="Name">
+
+            </div>
+            <div class="form-group">
+                <label>Department</label>
+                <input type="text" class="form-control" value="{{data.Department}}" name="Department">
+
+            </div>
+            <div class="form-group">
+                <label>Regno</label>
+                <input type="text" class="form-control" value="{{data.Regno}}" name="Regno">
+
+            </div>
+            <div class="form-group">
+                <label>Subject</label>
+                <input type="text" class="form-control" value="{{data.Subject}}" name="Subject">
+
+            </div>
+            <div class="form-group">
+                <label>Mark</label>
+                <input type="text" class="form-control" value="{{data.Mark}}" name="Mark">
+
+            </div>
+            <div class="form-group">
+                <label>Grade</label>
+                <input type="text" class="form-control" value="{{data.Grade}}" name="Grade">
+
+            </div>
+            <div class="form-group">
+                <input type="submit"  class="btn btn-primary btn-block" value="Update" >
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

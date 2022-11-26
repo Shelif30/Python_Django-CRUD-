@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top color">
+  <div class="container">
+    <div class="navbar-header">
+        <a href="" class="navbar-brand">Dashboard</a>
+    </div>   
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          <li><a href="{% url 'Profile' %}">Profile</a></li>
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          <li><a href="{% url 'Login' %}">Login</a></li>
+          <li><a href="{% url 'Register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+    
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+<h1>ABC college of Engineering </h1>
+<h3>Nagercoil,TamilNadu</h3>
+<hr>
+<h3>Register here</h3>
+<hr>
+<div class="container-fluid" style="margin-top:45px;">
+ 
+  <div class="col-md-offset-4 col-md-4 well" >
+  <h2>you have been logged out</h2>
+  <hr>
+  login again ? <a href="{% url 'Login' %}">Login</a>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

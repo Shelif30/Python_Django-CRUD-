@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top color">
+  <div class="container">
+    <div class="navbar-header">
+      {% if user.is_authenticated %}
+      <h4>Staff : {{ user.username}}</h4>
+      {% else %}
+      <h4>Admin Dashboard</h4>
+    {% endif %}
+    </div>   
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          <li><a href="{% url 'Profile' %}">Profile</a></li>
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'loginpage' %}">Home</a></li>
+          <li><a href="{% url 'Login' %}">Login</a></li>
+          <li><a href="{% url 'Register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+    
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+<h1>ABC college of Engineering </h1>
+<h3>Nagercoil,TamilNadu</h3>
+<hr>
+
+<div class="container-fluid" style="margin-top:45px;">
+ 
+  <div class="col-md-offset-4 col-md-4 well" >
+  <p>Name        :  {{ user.username}}</p>
+  <p>Institution :  ABC college of Engineering,Nagercoil,TamilNadu</p>
+  <p>Year        :  2022</p>
+  </div>
+
+</div>
+<img src="shelif.jpg" alt="">
+
+
+
+
+
+{% endblock %}
